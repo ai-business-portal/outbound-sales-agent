@@ -3,7 +3,6 @@ require('dotenv').config();
 const fastify = require('fastify')({ logger: true });
 const WebSocket = require('ws');
 const axios = require('axios');
-const SipgateClient = require('sipgate-rest-api-client');
 
 // Umgebungsvariablen
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
@@ -21,12 +20,6 @@ console.log('SIPGATE_TOKEN:', SIPGATE_TOKEN ? 'Set' : 'Not set');
 console.log('SIPGATE_CALLER_ID:', SIPGATE_CALLER_ID);
 console.log('SERVER_URL:', SERVER_URL);
 console.log('========================');
-
-// Sipgate Client initialisieren
-const sipgateClient = new SipgateClient({
-  username: SIPGATE_TOKEN_ID,
-  password: SIPGATE_TOKEN
-});
 
 // CORS Headers für Frontend-Zugriff
 fastify.register(require('@fastify/cors'), {
@@ -64,7 +57,7 @@ fastify.post('/outbound-call', async (request, reply) => {
   console.log('===== DEBUG INFO =====');
   console.log('Outbound call request received');
   console.log('Number:', number);
-  console.log('Using sipgate API');
+  console.log('Using sipgate API directly with axios');
   console.log('SIPGATE_TOKEN_ID:', SIPGATE_TOKEN_ID ? 'Set' : 'Not set');
   console.log('SIPGATE_TOKEN:', SIPGATE_TOKEN ? 'Set' : 'Not set');
   console.log('SIPGATE_CALLER_ID:', SIPGATE_CALLER_ID);
