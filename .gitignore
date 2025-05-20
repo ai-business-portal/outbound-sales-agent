@@ -1,0 +1,12 @@
+# ElevenLabs
+ELEVENLABS_AGENT_ID=your_agent_id_here
+ELEVENLABS_API_KEY=your_api_key_here
+
+# Sipgate
+SIPGATE_TOKEN_ID=your_token_id_here
+SIPGATE_TOKEN=your_token_here
+SIPGATE_CALLER_ID=your_phone_number_here
+
+# Server
+SERVER_URL=your_server_url_here
+
